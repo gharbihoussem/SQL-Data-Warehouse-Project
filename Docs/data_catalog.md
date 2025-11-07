@@ -1,6 +1,6 @@
-#Data Dictionary for Gold Layer
+# Data Dictionary for Gold Layer
 
-##Overview
+## Overview
   The Gold Layer is the business-level data representation, structured to support analytical and reporting use cases.
   It consists of dimension tables and fact tables for specific business metrics.
 
@@ -44,7 +44,7 @@
 
 
 ### 3. gold.fact_sales
-    •• Purpose: Stores transactional sales data for analytical purposes.
+    • Purpose: Stores transactional sales data for analytical purposes.
     • Columns:
 
 | Column Name    | Data Type    | Description                                                                          |
