@@ -91,9 +91,9 @@ select
   sd.sls_quantity as quantity , 
   sd.sls_price as price
 from silver.crm_sales_details as sd	
-left join gold_dim_products as pr 
+left join gold.dim_products as pr 
 on sd.sls_prd_key = pr.product_number
-left join gold_dim_customers as cu 
+left join gold.dim_customers as cu 
 on sd.sls_cust_id = cu.customer_id ;
 
 
