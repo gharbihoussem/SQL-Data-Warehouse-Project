@@ -17,14 +17,14 @@ Usage:|
 */
 
 -- *******************************************************************************
--- Create Dimention : gold_dim_customers.
+-- Create Dimention : gold.dim_customers.
 -- *******************************************************************************
 
-IF object_id('gold_dim_customers','V') is not null 
-	drop view gold_dim_customers ;
+IF object_id('gold.dim_customers','V') is not null 
+	drop view gold.dim_customers ;
 GO 
   
-create view gold_dim_customers as 
+create view gold.dim_customers as 
 select
   row_number() over (order by  ci.cst_id ) as customer_key,
   ci.cst_id as customer_id, 
@@ -46,14 +46,14 @@ left join silver.erp_LOC_A101 as la
 on la.cid=ci.cst_key ;
 
 -- *******************************************************************************
--- Create Dimention : gold_dim_products.
+-- Create Dimention : gold.dim_products.
 -- *******************************************************************************
 
-IF object_id('gold_dim_products','V') is not null 
-	drop view gold_dim_products ;
+IF object_id('gold.dim_products','V') is not null 
+	drop view gold.dim_products ;
 GO 
   
-create view gold_dim_products as 
+create view gold.dim_products as 
 select
   row_number() over (order by prd_start_dt , prd_key) as product_key,
   pi.prd_id as product_id , 
@@ -72,14 +72,14 @@ on pi.cat_id = cg.id
 where pi.prd_end_dt is null ;
 
 -- *******************************************************************************
--- Create Table : gold_fact_sales.
+-- Create Table : gold.fact_sales.
 -- *******************************************************************************
 
-IF object_id('gold_fact_sales','V') is not null 
-	drop view gold_fact_sales ;
+IF object_id('gold.fact_sales','V') is not null 
+	drop view gold.fact_sales ;
 GO 
   
-create view gold_fact_sales as 
+create view gold.fact_sales as 
 select 
   sd.sls_ord_num as order_number , 
   pr.product_key ,
